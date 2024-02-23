@@ -4,4 +4,6 @@ import com.sun.zzim.repository.datamodel.UserDataModel;
 
 public interface UserRepository {
     UserDataModel save(UserDataModel userDataModel);
+
+    UserDataModel findByLoginId(String loginId);
 }
