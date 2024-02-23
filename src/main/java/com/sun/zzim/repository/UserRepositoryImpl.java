@@ -18,4 +18,9 @@ public class UserRepositoryImpl implements UserRepository {
         UserDataModel saveModel = userJpaRepository.save(userDataModel);
         return saveModel;
     }
+
+    @Override
+    public UserDataModel findByLoginId(String loginId) {
+        return userJpaRepository.findByLoginId(loginId);
+    }
 }
