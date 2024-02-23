@@ -1,4 +1,4 @@
-package com.sun.zzim.domain;
+package com.sun.zzim.repository.datamodel;
 
 import jakarta.persistence.*;
 import lombok.Getter;
