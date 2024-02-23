@@ -22,10 +22,9 @@ public class JwtTokenProvider {
     }
 
     public String generateToken(UserDetail userDetail) {
-        // 권한 가져오기
         String authorities = userDetail.getAuthorities().stream().map(GrantedAuthority::getAuthority).findFirst().get();
 
-        // Access Token 생성
+
         String accessToken = Jwts.builder()
                 .setSubject(userDetail.getUsername())
                 .claim("auth", authorities)
