@@ -14,10 +14,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/users").permitAll()
+                        .requestMatchers("/users", "/users/login").permitAll()
                         .anyRequest().authenticated()
                 )
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/users"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/users", "/users/login"))
                 .logout(LogoutConfigurer::permitAll);
 
         return http.build();
