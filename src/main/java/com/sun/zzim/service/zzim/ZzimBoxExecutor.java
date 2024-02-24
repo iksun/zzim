@@ -1,5 +1,6 @@
 package com.sun.zzim.service.zzim;
 
+import com.sun.zzim.controller.zzim.ZzimBoxDeleteParam;
 import com.sun.zzim.repository.zzim.IZzimBoxRepository;
 import com.sun.zzim.repository.zzim.ZzimBoxDataModel;
 import com.sun.zzim.service.ZzimBoxCreateParam;
@@ -24,5 +25,15 @@ public class ZzimBoxExecutor implements IZzimBoxExecutor {
             return null;
         }
         return new ZzimBox(zzimBoxDataModel.getId(), zzimBoxDataModel.getName(), zzimBoxDataModel.getUserId());
+    }
+
+    @Override
+    public void deleteBox(ZzimBoxDeleteParam deleteParam) {
+        ZzimBoxDataModel zzimBox = repository.findById(deleteParam.getBoxId());
+        if(zzimBox == null) {
+            return ;
+        }
+
+        repository.delete(zzimBox);
     }
 }
