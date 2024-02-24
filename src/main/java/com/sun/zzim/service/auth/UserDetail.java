@@ -22,7 +22,9 @@ public class UserDetail implements UserDetails {
         authorities.add(new SimpleGrantedAuthority("USER"));
         return authorities;
     }
-
+    public Long getUserId() {
+        return userDataModel.getId();
+    }
     @Override
     public String getPassword() {
         return userDataModel.getLoginPw();
