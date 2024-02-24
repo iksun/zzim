@@ -17,16 +17,20 @@ public class UserLoginExecutor implements IUserLoginExecutor {
     }
 
     @Override
-    public String login(UserLoginParam userLoginParam) {
+    public UserLoginResult login(UserLoginParam userLoginParam) {
         UserDataModel userDataModel = userRepository.findByLoginId(userLoginParam.getLoginId());
         if(userDataModel == null) {
-            return null;
+            return new UserLoginResult(false, 0l, null);
         }
 
         if(!Objects.equals(userDataModel.getLoginPw(), userLoginParam.getPassword())) {
-            return null;
+            return new UserLoginResult(false, 0l, null);
         }
-        return jwtTokenProvider.generateToken(new UserDetail(userDataModel));
+        return new UserLoginResult(
+                true,
+                userDataModel.getId(),
+                jwtTokenProvider.generateToken(new UserDetail(userDataModel))
+        );
     }
 
 }

@@ -1,0 +1,16 @@
+package com.sun.zzim.service.auth;
+
+import lombok.Getter;
+
+@Getter
+public class UserLoginResult {
+    private boolean isSuccess;
+    private long userId;
+    private String jwtToken;
+
+    public UserLoginResult(boolean isSuccess, long userId, String jwtToken) {
+        this.isSuccess = isSuccess;
+        this.userId = userId;
+        this.jwtToken = jwtToken;
+    }
+}
