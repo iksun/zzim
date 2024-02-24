@@ -23,4 +23,9 @@ public class UserRepositoryImpl implements UserRepository {
     public UserDataModel findByLoginId(String loginId) {
         return userJpaRepository.findByLoginId(loginId);
     }
+
+    @Override
+    public UserDataModel findByUserId(long userId) {
+        return userJpaRepository.findById(userId).orElse(null);
+    }
 }

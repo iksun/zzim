@@ -30,4 +30,9 @@ public class UserStubRepository implements UserRepository {
     public UserDataModel findByLoginId(String loginId) {
         return userMap.get(loginId);
     }
+
+    @Override
+    public UserDataModel findByUserId(long userId) {
+        return null;
+    }
 }

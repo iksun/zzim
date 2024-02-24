@@ -6,4 +6,6 @@ public interface UserRepository {
     UserDataModel save(UserDataModel userDataModel);
 
     UserDataModel findByLoginId(String loginId);
+
+    UserDataModel findByUserId(long userId);
 }
