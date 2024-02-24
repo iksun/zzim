@@ -22,6 +22,11 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
+    public List<ProductDataModel> getProducts(List<Long> ids) {
+        return productJpaRepository.findAllById(ids);
+    }
+
+    @Override
     public ProductDataModel getProduct(long productId) {
         return productJpaRepository.findById(productId).orElse(null);
     }

@@ -11,6 +11,11 @@ public class ProductStubRepository implements IProductRepository {
     }
 
     @Override
+    public List<ProductDataModel> getProducts(List<Long> ids) {
+        return null;
+    }
+
+    @Override
     public ProductDataModel getProduct(long productId) {
         if(productId == 0) {
             return null;

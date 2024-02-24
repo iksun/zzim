@@ -1,6 +1,9 @@
 package com.sun.zzim.repository.zzim;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ZzimRepository implements IZzimRepository {
@@ -28,5 +31,10 @@ public class ZzimRepository implements IZzimRepository {
     @Override
     public void delete(ZzimDataModel zzimDataModel) {
         zzimJpaRepository.delete(zzimDataModel);
+    }
+
+    @Override
+    public List<ZzimDataModel> findAllByUserIdAndZzimBoxId(Long userId, Long zzimBoxId, int pageNumber, int size) {
+        return zzimJpaRepository.findAllByUserIdAndZzimBoxId(userId, zzimBoxId, PageRequest.of(pageNumber, size));
     }
 }
