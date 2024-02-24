@@ -55,6 +55,7 @@ public class ZzimBoxController {
         return ResponseEntity.ok(true);
     }
 
+    @Operation(summary = "찜 삭제", description = "찜을 삭제합니다.")
     @DeleteMapping("/zzim-boxes/{boxId}/zzim/{zzimId}")
     public ResponseEntity<Boolean> delete(@AuthenticationPrincipal UserDetail userDetail,
                                           @PathVariable long boxId,
