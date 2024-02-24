@@ -10,4 +10,5 @@ import java.util.List;
 public interface ZzimJpaRepository extends JpaRepository<ZzimDataModel, Long> {
     boolean existsByUserIdAndProductId(long userId, long productId);
     List<ZzimDataModel> findAllByUserIdAndZzimBoxId(Long userId, Long id, Pageable pageable);
+    void deleteAllByZzimBoxId(long zzimBoxId);
 }

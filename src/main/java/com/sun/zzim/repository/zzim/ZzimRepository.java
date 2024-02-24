@@ -37,4 +37,9 @@ public class ZzimRepository implements IZzimRepository {
     public List<ZzimDataModel> findAllByUserIdAndZzimBoxId(Long userId, Long zzimBoxId, int pageNumber, int size) {
         return zzimJpaRepository.findAllByUserIdAndZzimBoxId(userId, zzimBoxId, PageRequest.of(pageNumber, size));
     }
+
+    @Override
+    public void deleteByZzimBoxId(Long zzimBoxId) {
+        zzimJpaRepository.deleteAllByZzimBoxId(zzimBoxId);
+    }
 }
