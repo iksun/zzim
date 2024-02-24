@@ -35,4 +35,20 @@ class IZzimExecutorTest {
         assertNotNull(zzim);
         assertNull(zzim2);
     }
+
+    @Test
+    void sut_zzim_delete_success() {
+        var sut = new ZzimExecutor(new ZzimStubRepository(), new ProductStubRepository());
+        Zzim zzim = sut.zzim(new ZzimParam(1L, 1L, 1l));
+        assertTrue(sut.delete(new ZzimDeleteParam(1L, 1L, 1L)));
+
+    }
+
+    @Test
+    void sut_zzim_delete_failed_not_my_zzim() {
+        var sut = new ZzimExecutor(new ZzimStubRepository(), new ProductStubRepository());
+        Zzim zzim = sut.zzim(new ZzimParam(2L, 1L, 1l));
+        assertFalse(sut.delete(new ZzimDeleteParam(1L, 1L, 1L)));
+
+    }
 }

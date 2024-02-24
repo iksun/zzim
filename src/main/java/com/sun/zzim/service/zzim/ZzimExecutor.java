@@ -5,6 +5,8 @@ import com.sun.zzim.repository.zzim.IZzimRepository;
 import com.sun.zzim.repository.zzim.ZzimDataModel;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class ZzimExecutor implements IZzimExecutor {
     private final IZzimRepository zzimRepository;
@@ -42,5 +44,19 @@ public class ZzimExecutor implements IZzimExecutor {
                 zzimDataModel.getZzimBoxId(),
                 zzimDataModel.getProductId()
         );
+    }
+
+    @Override
+    public boolean delete(ZzimDeleteParam zzimDeleteParam) {
+        ZzimDataModel zzimDataModel = zzimRepository.findById(zzimDeleteParam.getZzimId());
+        if(zzimDataModel == null) {
+            return false;
+        }
+        if(!Objects.equals(zzimDataModel.getUserId(), zzimDeleteParam.getUserId())) {
+            return false;
+        }
+
+        zzimRepository.delete(zzimDataModel);
+        return true;
     }
 }
