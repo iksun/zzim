@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IProductRepository {
     public List<ProductDataModel> getProducts(int pageNumber , int size);
+    public ProductDataModel getProduct(long productId);
 
 }

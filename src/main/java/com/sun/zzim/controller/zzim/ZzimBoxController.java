@@ -2,9 +2,7 @@ package com.sun.zzim.controller.zzim;
 
 import com.sun.zzim.service.ZzimBoxCreateParam;
 import com.sun.zzim.service.user.auth.UserDetail;
-import com.sun.zzim.service.zzim.IZzimBoxExecutor;
-import com.sun.zzim.service.zzim.IZzimBoxReader;
-import com.sun.zzim.service.zzim.ZzimBox;
+import com.sun.zzim.service.zzim.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,10 +15,11 @@ import java.util.stream.Collectors;
 public class ZzimBoxController {
     private final IZzimBoxReader zzimBoxReader;
     private final IZzimBoxExecutor zzimBoxExecutor;
-
-    public ZzimBoxController(IZzimBoxReader zzimBoxReader, IZzimBoxExecutor zzimBoxExecutor) {
+    private final IZzimExecutor zzimExecutor;
+    public ZzimBoxController(IZzimBoxReader zzimBoxReader, IZzimBoxExecutor zzimBoxExecutor, IZzimExecutor zzimExecutor) {
         this.zzimBoxReader = zzimBoxReader;
         this.zzimBoxExecutor = zzimBoxExecutor;
+        this.zzimExecutor = zzimExecutor;
     }
 
     @GetMapping("/zzim-boxes")
@@ -48,8 +47,19 @@ public class ZzimBoxController {
     @DeleteMapping("/zzim-boxes/{boxId}")
     public ResponseEntity<Boolean> deleteBox(@AuthenticationPrincipal UserDetail userDetail,
                                              @PathVariable long boxId) {
-
         zzimBoxExecutor.deleteBox(new ZzimBoxDeleteParam(userDetail.getUserId(), boxId));
         return ResponseEntity.ok(true);
+    }
+
+    @PostMapping("/zzim-boxes/{boxId}/zzim")
+    public ResponseEntity<Long> zzim(@AuthenticationPrincipal UserDetail userDetail,
+                                        @PathVariable long boxId,
+                                        @RequestBody ZzimCreateRequest zzimCreateRequest) {
+        Zzim zzim = zzimExecutor.zzim(new ZzimParam(userDetail.getUserId(), boxId, zzimCreateRequest.getProductId()));
+        if(zzim == null) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+
+        return ResponseEntity.ok(zzim.getId());
     }
 }
