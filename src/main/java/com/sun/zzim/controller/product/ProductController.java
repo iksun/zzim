@@ -20,7 +20,8 @@ public class ProductController {
 
     @Operation(summary = "상품 목록 조회", description = "등록된 상품을 조회합니다.")
     @GetMapping("/products")
-    public ResponseEntity<List<ProductResponse>> getProducts(@RequestParam int pageNumber , @RequestParam int size) {
+    public ResponseEntity<List<ProductResponse>> getProducts(@RequestParam(defaultValue = "0") int pageNumber,
+                                                             @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(
                 productReader.getAllProducts(pageNumber, size)
                         .stream()

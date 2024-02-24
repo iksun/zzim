@@ -27,8 +27,8 @@ public class ZzimBoxController {
     @Operation(summary = "찜박스 목록", description = "나의 찜박스 목록을 출력합니다.")
     @GetMapping("/zzim-boxes")
     public ResponseEntity<List<ZzimboxResponse>> getMyBoxes(@AuthenticationPrincipal UserDetail userDetail,
-                                                            @RequestParam int pageNumber ,
-                                                            @RequestParam int size) {
+                                                            @RequestParam(defaultValue = "0")  int pageNumber ,
+                                                            @RequestParam(defaultValue = "10")  int size) {
         return ResponseEntity.ok(
                 zzimBoxReader.getMyZzimBox(userDetail.getUserId(), pageNumber, size)
                         .stream()
@@ -80,8 +80,8 @@ public class ZzimBoxController {
     @GetMapping("/zzim-boxes/{boxId}")
     public ResponseEntity<List<ZzimResponse>> getZzims(@AuthenticationPrincipal UserDetail userDetail,
                                                       @PathVariable long boxId,
-                                                      @RequestParam int pageNumber ,
-                                                      @RequestParam int size) {
+                                                      @RequestParam(defaultValue = "0") int pageNumber ,
+                                                      @RequestParam(defaultValue = "10") int size) {
         List<Zzim> zzimsInBox = zzimBoxReader.getZzimInBox(userDetail.getUserId(), boxId, pageNumber, size);
         return ResponseEntity.ok(
                 zzimsInBox
