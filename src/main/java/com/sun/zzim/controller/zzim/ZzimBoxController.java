@@ -1,5 +1,6 @@
 package com.sun.zzim.controller.zzim;
 
+import com.sun.zzim.controller.product.ProductResponse;
 import com.sun.zzim.service.ZzimBoxCreateParam;
 import com.sun.zzim.service.user.auth.UserDetail;
 import com.sun.zzim.service.zzim.*;
@@ -70,5 +71,26 @@ public class ZzimBoxController {
         zzimExecutor.delete(new ZzimDeleteParam(boxId, zzimId, userDetail.getUserId()));
         return ResponseEntity.ok(true);
     }
+    @GetMapping("/zzim-boxes/{boxId}")
+    public ResponseEntity<List<ZzimResponse>> getZzims(@AuthenticationPrincipal UserDetail userDetail,
+                                                      @PathVariable long boxId,
+                                                      @RequestParam int pageNumber ,
+                                                      @RequestParam int size) {
+        List<Zzim> zzimsInBox = zzimBoxReader.getZzimInBox(userDetail.getUserId(), boxId, pageNumber, size);
+        return ResponseEntity.ok(
+                zzimsInBox
+                        .stream()
+                        .map(it-> new ZzimResponse(
+                                it.getId(),
+                                it.getUserId(),
+                                it.getZzimBoxId(),
+                                new ProductResponse(
+                                        it.getProduct().getId(),
+                                        it.getProduct().getName(),
+                                        it.getProduct().getThumbnail(),
+                                        it.getProduct().getPrice())))
+                        .collect(Collectors.toList()));
+    }
+
 
 }

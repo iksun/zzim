@@ -30,4 +30,9 @@ public class ZzimStubRepository implements IZzimRepository {
     public void delete(ZzimDataModel zzimDataModel) {
 
     }
+
+    @Override
+    public List<ZzimDataModel> findAllByUserIdAndZzimBoxId(Long userId, Long zzimBoxId, int pageNumber, int size) {
+        return null;
+    }
 }

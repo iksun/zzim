@@ -9,4 +9,6 @@ public interface IZzimRepository {
     ZzimDataModel findById(Long zzimId);
 
     void delete(ZzimDataModel zzimDataModel);
+
+    List<ZzimDataModel> findAllByUserIdAndZzimBoxId(Long userId, Long zzimBoxId, int pageNumber, int size);
 }
