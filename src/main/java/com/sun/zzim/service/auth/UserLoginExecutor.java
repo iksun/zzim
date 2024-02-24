@@ -8,12 +8,12 @@ import java.util.Objects;
 
 @Service
 public class UserLoginExecutor implements IUserLoginExecutor {
-    private UserRepository userRepository;
-    private JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    public UserLoginExecutor(UserRepository userRepository, JwtTokenProvider jwtTokenProvider) {
+    public UserLoginExecutor(UserRepository userRepository, JwtTokenProviderFactory jwtTokenProviderFactory) {
         this.userRepository = userRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
+        jwtTokenProvider = jwtTokenProviderFactory.getJwtTokenProvider();
     }
 
     @Override
