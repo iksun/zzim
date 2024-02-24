@@ -6,5 +6,5 @@ import java.util.List;
 public interface IZzimBoxRepository {
     List<ZzimBoxDataModel> findMyZzimBoxes(long userId, int pageNumber, int size);
     boolean existSameNameBoxes(long userId, String name);
-    void save(String name, long userId);
+    ZzimBoxDataModel save(String name, long userId);
 }

@@ -18,8 +18,8 @@ public class ZzimBoxRepository implements IZzimBoxRepository {
     }
 
     @Override
-    public void save(String name, long userId) {
-        repository.save(new ZzimBoxDataModel(name, userId));
+    public ZzimBoxDataModel save(String name, long userId) {
+        return repository.save(new ZzimBoxDataModel(name, userId));
     }
 
     @Override

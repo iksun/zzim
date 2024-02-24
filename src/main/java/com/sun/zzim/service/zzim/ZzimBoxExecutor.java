@@ -1,7 +1,9 @@
 package com.sun.zzim.service.zzim;
 
 import com.sun.zzim.repository.zzim.IZzimBoxRepository;
+import com.sun.zzim.repository.zzim.ZzimBoxDataModel;
 import com.sun.zzim.service.ZzimBoxCreateParam;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,11 +15,14 @@ public class ZzimBoxExecutor implements IZzimBoxExecutor {
     }
 
     @Override
-    public void createBox(ZzimBoxCreateParam param) {
+    public ZzimBox createBox(ZzimBoxCreateParam param) {
         if(repository.existSameNameBoxes(param.getUserId(), param.getName())) {
-            return ;
+            return null;
         }
-
-        repository.save(param.getName(), param.getUserId());
+        ZzimBoxDataModel zzimBoxDataModel = repository.save(param.getName(), param.getUserId());
+        if(zzimBoxDataModel == null) {
+            return null;
+        }
+        return new ZzimBox(zzimBoxDataModel.getId(), zzimBoxDataModel.getName(), zzimBoxDataModel.getUserId());
     }
 }
