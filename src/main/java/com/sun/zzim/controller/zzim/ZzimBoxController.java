@@ -62,4 +62,13 @@ public class ZzimBoxController {
 
         return ResponseEntity.ok(zzim.getId());
     }
+
+    @DeleteMapping("/zzim-boxes/{boxId}/zzim/{zzimId}")
+    public ResponseEntity<Boolean> delete(@AuthenticationPrincipal UserDetail userDetail,
+                                          @PathVariable long boxId,
+                                          @PathVariable long zzimId) {
+        zzimExecutor.delete(new ZzimDeleteParam(boxId, zzimId, userDetail.getUserId()));
+        return ResponseEntity.ok(true);
+    }
+
 }

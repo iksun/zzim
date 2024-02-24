@@ -19,4 +19,14 @@ public class ZzimRepository implements IZzimRepository {
     public boolean exist(long productId, long userId) {
         return zzimJpaRepository.existsByUserIdAndProductId(userId, productId);
     }
+
+    @Override
+    public ZzimDataModel findById(Long zzimId) {
+        return zzimJpaRepository.findById(zzimId).orElse(null);
+    }
+
+    @Override
+    public void delete(ZzimDataModel zzimDataModel) {
+        zzimJpaRepository.delete(zzimDataModel);
+    }
 }

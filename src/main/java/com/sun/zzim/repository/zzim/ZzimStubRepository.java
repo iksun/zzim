@@ -20,4 +20,14 @@ public class ZzimStubRepository implements IZzimRepository {
                         && Objects.equals(it.getUserId(), userId)
                 );
     }
+
+    @Override
+    public ZzimDataModel findById(Long zzimId) {
+        return zzims.get(0);
+    }
+
+    @Override
+    public void delete(ZzimDataModel zzimDataModel) {
+
+    }
 }
