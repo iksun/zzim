@@ -1,6 +1,8 @@
 package com.sun.zzim.service;
 
-import com.sun.zzim.repository.UserStubRepository;
+import com.sun.zzim.repository.user.UserStubRepository;
+import com.sun.zzim.service.user.UserSignUpExecutor;
+import com.sun.zzim.service.user.UserSignUpParam;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

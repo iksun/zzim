@@ -1,9 +1,9 @@
-package com.sun.zzim.controller;
+package com.sun.zzim.controller.user;
 
-import com.sun.zzim.service.IUserReader;
-import com.sun.zzim.service.IUserSignUpExecutor;
-import com.sun.zzim.service.UserSignUpParam;
-import com.sun.zzim.service.auth.UserDetail;
+import com.sun.zzim.service.user.IUserReader;
+import com.sun.zzim.service.user.IUserSignUpExecutor;
+import com.sun.zzim.service.user.UserSignUpParam;
+import com.sun.zzim.service.user.auth.UserDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

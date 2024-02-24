@@ -1,6 +1,6 @@
-package com.sun.zzim.service.auth;
+package com.sun.zzim.service.user.auth;
 
-import com.sun.zzim.repository.UserRepository;
+import com.sun.zzim.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

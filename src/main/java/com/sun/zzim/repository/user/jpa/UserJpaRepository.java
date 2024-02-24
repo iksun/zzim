@@ -1,6 +1,6 @@
-package com.sun.zzim.repository.jpa;
+package com.sun.zzim.repository.user.jpa;
 
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

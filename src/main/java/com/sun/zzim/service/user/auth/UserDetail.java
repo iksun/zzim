@@ -1,6 +1,6 @@
-package com.sun.zzim.service.auth;
+package com.sun.zzim.service.user.auth;
 
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,8 +1,8 @@
-package com.sun.zzim.controller;
+package com.sun.zzim.controller.user;
 
-import com.sun.zzim.service.auth.IUserLoginExecutor;
-import com.sun.zzim.service.auth.UserLoginParam;
-import com.sun.zzim.service.auth.UserLoginResult;
+import com.sun.zzim.service.user.auth.IUserLoginExecutor;
+import com.sun.zzim.service.user.auth.UserLoginParam;
+import com.sun.zzim.service.user.auth.UserLoginResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

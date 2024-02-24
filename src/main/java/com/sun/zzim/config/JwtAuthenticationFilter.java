@@ -1,6 +1,6 @@
 package com.sun.zzim.config;
 
-import com.sun.zzim.service.auth.JwtTokenProvider;
+import com.sun.zzim.service.user.auth.JwtTokenProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,11 +1,11 @@
 package com.sun.zzim.service;
 
-import com.sun.zzim.repository.UserStubRepository;
-import com.sun.zzim.repository.datamodel.UserDataModel;
-import com.sun.zzim.service.auth.JwtTokenProviderFactory;
-import com.sun.zzim.service.auth.UserLoginExecutor;
-import com.sun.zzim.service.auth.UserLoginParam;
-import com.sun.zzim.service.auth.UserLoginResult;
+import com.sun.zzim.repository.user.UserStubRepository;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
+import com.sun.zzim.service.user.auth.JwtTokenProviderFactory;
+import com.sun.zzim.service.user.auth.UserLoginExecutor;
+import com.sun.zzim.service.user.auth.UserLoginParam;
+import com.sun.zzim.service.user.auth.UserLoginResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

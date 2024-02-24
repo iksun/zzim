@@ -1,7 +1,7 @@
-package com.sun.zzim.service;
+package com.sun.zzim.service.user;
 
-import com.sun.zzim.repository.UserRepository;
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.UserRepository;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
 import org.springframework.stereotype.Service;
 
 @Service

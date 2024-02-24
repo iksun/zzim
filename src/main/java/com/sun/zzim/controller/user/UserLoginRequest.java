@@ -1,13 +1,13 @@
-package com.sun.zzim.service.auth;
+package com.sun.zzim.controller.user;
 
 import lombok.Getter;
 
 @Getter
-public class UserLoginParam {
+public class UserLoginRequest {
     private final String loginId;
     private final String password;
 
-    public UserLoginParam(String loginId, String password) {
+    public UserLoginRequest(String loginId, String password) {
         this.loginId = loginId;
         this.password = password;
     }

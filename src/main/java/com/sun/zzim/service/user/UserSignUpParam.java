@@ -1,4 +1,4 @@
-package com.sun.zzim.service;
+package com.sun.zzim.service.user;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
-package com.sun.zzim.controller;
+package com.sun.zzim.controller.user;
 
-import com.sun.zzim.service.User;
+import com.sun.zzim.service.user.User;
 import lombok.Getter;
 
 @Getter

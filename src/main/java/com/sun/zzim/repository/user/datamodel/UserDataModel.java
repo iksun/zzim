@@ -1,4 +1,4 @@
-package com.sun.zzim.repository.datamodel;
+package com.sun.zzim.repository.user.datamodel;
 
 import jakarta.persistence.*;
 import lombok.Getter;

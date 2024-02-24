@@ -1,6 +1,6 @@
-package com.sun.zzim.repository;
+package com.sun.zzim.repository.user;
 
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
 
 public interface UserRepository {
     UserDataModel save(UserDataModel userDataModel);

@@ -1,7 +1,7 @@
-package com.sun.zzim.service.auth;
+package com.sun.zzim.service.user.auth;
 
-import com.sun.zzim.repository.UserRepository;
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.UserRepository;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

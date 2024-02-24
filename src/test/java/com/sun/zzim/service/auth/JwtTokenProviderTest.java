@@ -1,7 +1,9 @@
 package com.sun.zzim.service.auth;
 
-import com.sun.zzim.repository.UserStubRepository;
-import com.sun.zzim.repository.datamodel.UserDataModel;
+import com.sun.zzim.repository.user.UserStubRepository;
+import com.sun.zzim.repository.user.datamodel.UserDataModel;
+import com.sun.zzim.service.user.auth.JwtTokenProvider;
+import com.sun.zzim.service.user.auth.UserDetail;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.Authentication;
 

@@ -1,7 +1,7 @@
 package com.sun.zzim.config;
 
-import com.sun.zzim.service.auth.JwtTokenProvider;
-import com.sun.zzim.service.auth.JwtTokenProviderFactory;
+import com.sun.zzim.service.user.auth.JwtTokenProvider;
+import com.sun.zzim.service.user.auth.JwtTokenProviderFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
