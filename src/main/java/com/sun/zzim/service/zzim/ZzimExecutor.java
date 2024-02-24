@@ -1,8 +1,10 @@
 package com.sun.zzim.service.zzim;
 
 import com.sun.zzim.repository.product.IProductRepository;
+import com.sun.zzim.repository.product.datamodel.ProductDataModel;
 import com.sun.zzim.repository.zzim.IZzimRepository;
 import com.sun.zzim.repository.zzim.ZzimDataModel;
+import com.sun.zzim.service.product.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -37,13 +39,16 @@ public class ZzimExecutor implements IZzimExecutor {
                         zzimParam.getZzimBoxId(),
                         zzimParam.getProductId())
         );
-
+        ProductDataModel product = productRepository.getProduct(zzimParam.getProductId());
         return new Zzim(
                 zzimDataModel.getId(),
                 zzimDataModel.getUserId(),
                 zzimDataModel.getZzimBoxId(),
-                zzimDataModel.getProductId()
-        );
+                new Product(
+                        product.getId(),
+                        product.getName(),
+                        product.getThumbnail(),
+                        product.getPrice()));
     }
 
     @Override
