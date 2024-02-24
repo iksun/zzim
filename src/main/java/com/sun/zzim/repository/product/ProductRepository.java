@@ -20,4 +20,9 @@ public class ProductRepository implements IProductRepository {
         Page<ProductDataModel> result = productJpaRepository.findAll(PageRequest.of(pageNumber, size));
         return result.getContent();
     }
+
+    @Override
+    public ProductDataModel getProduct(long productId) {
+        return productJpaRepository.findById(productId).orElse(null);
+    }
 }
