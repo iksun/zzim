@@ -5,6 +5,7 @@ import com.sun.zzim.service.user.auth.UserDetail;
 import com.sun.zzim.service.zzim.IZzimBoxExecutor;
 import com.sun.zzim.service.zzim.IZzimBoxReader;
 import com.sun.zzim.service.zzim.ZzimBox;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,17 @@ public class ZzimBoxController {
     public ResponseEntity<ZzimboxResponse> createBox(@AuthenticationPrincipal UserDetail userDetail,
                                              @RequestBody ZzimBoxCreateRequest zzimBoxCreateRequest) {
         ZzimBox zzimBox = zzimBoxExecutor.createBox(new ZzimBoxCreateParam(userDetail.getUserId(), zzimBoxCreateRequest.getName()));
+        if(zzimBox == null) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
         return ResponseEntity.ok(new ZzimboxResponse(zzimBox.getId(), zzimBox.getName(), zzimBox.getUserId()));
     }
 
+    @DeleteMapping("/zzim-boxes/{boxId}")
+    public ResponseEntity<Boolean> deleteBox(@AuthenticationPrincipal UserDetail userDetail,
+                                             @PathVariable long boxId) {
+
+        zzimBoxExecutor.deleteBox(new ZzimBoxDeleteParam(userDetail.getUserId(), boxId));
+        return ResponseEntity.ok(true);
+    }
 }
