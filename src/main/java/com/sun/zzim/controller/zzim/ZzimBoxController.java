@@ -1,12 +1,12 @@
 package com.sun.zzim.controller.zzim;
 
+import com.sun.zzim.service.ZzimBoxCreateParam;
 import com.sun.zzim.service.user.auth.UserDetail;
+import com.sun.zzim.service.zzim.IZzimBoxExecutor;
 import com.sun.zzim.service.zzim.IZzimBoxReader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,9 +14,11 @@ import java.util.stream.Collectors;
 @RestController
 public class ZzimBoxController {
     private final IZzimBoxReader zzimBoxReader;
+    private final IZzimBoxExecutor zzimBoxExecutor;
 
-    public ZzimBoxController(IZzimBoxReader zzimBoxReader) {
+    public ZzimBoxController(IZzimBoxReader zzimBoxReader, IZzimBoxExecutor zzimBoxExecutor) {
         this.zzimBoxReader = zzimBoxReader;
+        this.zzimBoxExecutor = zzimBoxExecutor;
     }
 
     @GetMapping("/zzim-boxes")
@@ -30,4 +32,12 @@ public class ZzimBoxController {
                         .collect(Collectors.toList())
         );
     }
+
+    @PostMapping("/zzim-boxes")
+    public ResponseEntity<Boolean> createBox(@AuthenticationPrincipal UserDetail userDetail,
+                                             @RequestBody ZzimBoxCreateRequest zzimBoxCreateRequest) {
+        zzimBoxExecutor.createBox(new ZzimBoxCreateParam(userDetail.getUserId(), zzimBoxCreateRequest.getName()));
+        return ResponseEntity.ok(true);
+    }
+
 }

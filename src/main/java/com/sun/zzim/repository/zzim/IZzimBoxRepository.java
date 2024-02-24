@@ -4,5 +4,7 @@ import java.util.List;
 
 
 public interface IZzimBoxRepository {
-    List<ZzimBoxDataModel> getMyZzimBoxes(long userId, int pageNumber, int size);
+    List<ZzimBoxDataModel> findMyZzimBoxes(long userId, int pageNumber, int size);
+    boolean existSameNameBoxes(long userId, String name);
+    ZzimBoxDataModel save(String name, long userId);
 }
