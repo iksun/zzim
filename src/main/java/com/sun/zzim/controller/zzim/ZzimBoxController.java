@@ -4,6 +4,7 @@ import com.sun.zzim.service.ZzimBoxCreateParam;
 import com.sun.zzim.service.user.auth.UserDetail;
 import com.sun.zzim.service.zzim.IZzimBoxExecutor;
 import com.sun.zzim.service.zzim.IZzimBoxReader;
+import com.sun.zzim.service.zzim.ZzimBox;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +35,10 @@ public class ZzimBoxController {
     }
 
     @PostMapping("/zzim-boxes")
-    public ResponseEntity<Boolean> createBox(@AuthenticationPrincipal UserDetail userDetail,
+    public ResponseEntity<ZzimboxResponse> createBox(@AuthenticationPrincipal UserDetail userDetail,
                                              @RequestBody ZzimBoxCreateRequest zzimBoxCreateRequest) {
-        zzimBoxExecutor.createBox(new ZzimBoxCreateParam(userDetail.getUserId(), zzimBoxCreateRequest.getName()));
-        return ResponseEntity.ok(true);
+        ZzimBox zzimBox = zzimBoxExecutor.createBox(new ZzimBoxCreateParam(userDetail.getUserId(), zzimBoxCreateRequest.getName()));
+        return ResponseEntity.ok(new ZzimboxResponse(zzimBox.getId(), zzimBox.getName(), zzimBox.getUserId()));
     }
 
 }
