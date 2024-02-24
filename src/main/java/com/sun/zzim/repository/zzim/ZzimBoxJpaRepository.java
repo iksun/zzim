@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ZzimBoxJpaRepository extends JpaRepository<ZzimBoxDataModel, Long> {
     List<ZzimBoxDataModel> findAllByUserId(long userId, Pageable pageable);
+    boolean existsByUserIdAndName(long userId, String name);
 }

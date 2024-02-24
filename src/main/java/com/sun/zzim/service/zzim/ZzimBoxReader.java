@@ -16,7 +16,7 @@ public class ZzimBoxReader implements IZzimBoxReader {
 
     @Override
     public List<ZzimBox> getMyZzimBox(long userId, int pageNumber, int size) {
-        return repository.getMyZzimBoxes(userId, pageNumber, size)
+        return repository.findMyZzimBoxes(userId, pageNumber, size)
                 .stream()
                 .map(it -> new ZzimBox(it.getId(), it.getName(), it.getUserId()))
                 .collect(Collectors.toList());

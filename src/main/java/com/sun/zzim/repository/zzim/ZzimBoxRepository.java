@@ -13,7 +13,17 @@ public class ZzimBoxRepository implements IZzimBoxRepository {
     }
 
     @Override
-    public List<ZzimBoxDataModel> getMyZzimBoxes(long userId, int pageNumber, int size) {
+    public List<ZzimBoxDataModel> findMyZzimBoxes(long userId, int pageNumber, int size) {
         return repository.findAllByUserId(userId, PageRequest.of(pageNumber, size));
+    }
+
+    @Override
+    public void save(String name, long userId) {
+        repository.save(new ZzimBoxDataModel(name, userId));
+    }
+
+    @Override
+    public boolean existSameNameBoxes(long userId, String name) {
+        return repository.existsByUserIdAndName(userId, name);
     }
 }
