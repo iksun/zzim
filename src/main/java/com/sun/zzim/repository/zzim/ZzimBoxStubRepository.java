@@ -20,4 +20,14 @@ public class ZzimBoxStubRepository implements IZzimBoxRepository {
         list.add(zzimBoxDataModel);
         return zzimBoxDataModel;
     }
+
+    @Override
+    public void delete(ZzimBoxDataModel zzimBoxDataModel) {
+
+    }
+
+    @Override
+    public ZzimBoxDataModel findById(long zzimBoxId) {
+        return null;
+    }
 }
