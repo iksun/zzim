@@ -4,6 +4,7 @@ import com.sun.zzim.service.user.IUserReader;
 import com.sun.zzim.service.user.IUserSignUpExecutor;
 import com.sun.zzim.service.user.UserSignUpParam;
 import com.sun.zzim.service.user.auth.UserDetail;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +22,7 @@ public class UserController {
         this.userReader = userReader;
     }
 
+    @Operation(summary = "회원가입", description = "회원가입을 시도합니다.")
     @PostMapping("/users")
     public boolean signUp(@RequestBody UserCreateRequest userCreateRequest) {
         return signUpExecutor.signup(
@@ -30,6 +32,7 @@ public class UserController {
         );
     }
 
+    @Operation(summary = "회원정보 조회", description = "나의 회원 정보를 조회합니다. ")
     @GetMapping("/users/{userId}")
     public ResponseEntity<UserResponse> getUser(@AuthenticationPrincipal UserDetail userDetail,
                                                 @PathVariable Long userId) {

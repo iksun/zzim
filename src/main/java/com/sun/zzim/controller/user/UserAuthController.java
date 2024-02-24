@@ -3,6 +3,7 @@ package com.sun.zzim.controller.user;
 import com.sun.zzim.service.user.auth.IUserLoginExecutor;
 import com.sun.zzim.service.user.auth.UserLoginParam;
 import com.sun.zzim.service.user.auth.UserLoginResult;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ public class UserAuthController {
         this.userLoginExecutor = userLoginExecutor;
     }
 
+    @Operation(summary = "로그인", description = "가입된 계정으로 로그인을 시도합니다.")
     @PostMapping("/users/login")
     public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest) {
         UserLoginResult loginResult = userLoginExecutor.login(
