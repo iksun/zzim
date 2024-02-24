@@ -5,15 +5,20 @@
 - 중요 로직에 Unit Test를 추가하였습니다. 
 - 코드 커밋 단위를 최소화 하였습니다.(실제 작업시 조금 더 작게 합니다)
 - AWS free tier Mysql을 사용하여 api 속도가 느립니다. :(
+- 포트 정보 : 8080
+
 
 # 프로젝트 실행 가이드
 
 1. **프로젝트 압축 파일 전송 압출을 풉니다**
-   - zip 파일을 풉니다.
+    ```bash
+      unzip zzim.zip
+    ```
 
-2. **프로젝트 폴더로 이동합니다.:**
+
+2. **프로젝트 폴더로 이동합니다.**
    ```bash
-   cd ~/zzim
+   cd ./zzim
     ```
 
 3. ** 프로젝트를 빌드합니댜. **
@@ -33,13 +38,11 @@
 # 테스트 방법
 1. api 문서에 접속합니다.
 2. POST /users api를 통하여 회원 가입을 시도합니다.
-    ```java 
-   body 예제
+    ```json 
    {"loginId": "testId3","password": "password2"}
    ```
 3. POST /users/login을 통하여 로그인하고 토큰을 발급받습니다. 
-   ```java 
-    body 예제
+   ```json 
    {"loginId": "testId3","password": "password2"}
    ```
 4. 로그인 리스폰스의 **jwtToken** 값을 Authorize에 입력 후 나머지 api를 호출합니다. 
